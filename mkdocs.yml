@@ -1,0 +1,7 @@
+site_name: S3 Simple Compress ZIP
+repo_url: https://github.com/BrunoMesquitaa/s3_simple_compress
+repo_name: s3_simple_compress
+edit_uri: tree/main/docs
+
+theme:
+  name: material
