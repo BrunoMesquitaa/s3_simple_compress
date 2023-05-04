@@ -8,7 +8,7 @@ packages = [{include = "s3_compress"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-boto3 = "^1.26.125"
+boto3 = ">=1.25.0,<1.26.98"
 rich = "^13.3.5"
 
 
@@ -17,6 +17,9 @@ pytest = "^7.3.1"
 pytest-cov = "^4.0.0"
 blue = "^0.9.1"
 taskipy = "^1.10.4"
+localstack = "^2.0.2"
+awscli-local = "^0.20"
+awscli = "^1.27.126"
 
 
 [tool.poetry.group.doc.dependencies]
@@ -27,3 +30,12 @@ mkdocs-material = "^9.1.9"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.taskipy.tasks]
+check_code = "blue --check --diff ."
+fix_code = "blue ."
+docs = "mkdocs serve"
+pre_test = "task check_code"
+test = "localstack start -d && pytest -s -vv --cov=. && localstack stop"
+post_test = "coverage html && firefox htmlcov/index.html"
+run = "python s3_compress/zipping_s3.py"
