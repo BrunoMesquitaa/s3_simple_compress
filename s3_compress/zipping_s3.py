@@ -79,12 +79,21 @@ class ZippingS3:
             )
 
             for obj in objects:
+
+                name = str(
+                    (obj.key).replace(
+                        str('/'.join(prefix.split('/')[:-1])), ''
+                    )
+                )
+                if name.startswith('/'):
+                    name = name[1:]
+
                 byte_io = io.BytesIO()
                 self.__s3_resource__.Object(
                     bucket_name, obj.key
                 ).download_fileobj(byte_io)
                 tupla_file = (
-                    str((obj.key).replace(prefix, '')),
+                    name,
                     io.BytesIO(byte_io.getvalue()),
                 )
                 files.append(tupla_file)
@@ -97,7 +106,7 @@ class ZippingS3:
         bucket_name: str,
         prefix: str,
         zip_name: str,
-        # files: list = None,
+        files: list = None,
         extra_args: dict = None,
     ) -> None:
 
@@ -112,13 +121,31 @@ class ZippingS3:
         Examples:
             >>> zipping_in_s3('bucket_name', 'prefix', 'zip_name')
         """
-
-        files = self.s3_download_in_memory(bucket_name, prefix)
-
         if not files:
-            raise FileNotFoundError(
-                'File or directory is requested but doesn’t exist'
+            files = self.s3_download_in_memory(bucket_name, prefix)
+            if len(files) == 0:
+                raise FileNotFoundError(
+                    'File or directory is requested but doesn’t exist'
+                )
+        try:
+            for f in files:
+                if not (
+                    type(f) is tuple
+                    and type(f[0]) is str
+                    and type(f[1]) is io.BytesIO
+                ):
+                    raise TypeError(
+                        'Object has inappropriate type, accepted format (list[tuple[str, io.BytesIO()]])'
+                    )
+        except:
+            raise TypeError(
+                'Object has inappropriate type, accepted format (list[tuple[str, io.BytesIO()]])'
             )
+
+        if '/' in prefix:
+            prefix = '/'.join(prefix.split('/')[:-1]) + '/'
+        else:
+            prefix = ''
 
         self.console.print('[green]Start zip :package:')
         with self.console.status('Initial status ') as status:

@@ -81,3 +81,55 @@ def test_zipping_in_s3(create_bucket_localstack, upload_file_localstack):
     ]
     assert 'zip_name.zip' in result
     assert len(result) == 2
+
+
+def test_zipping_in_s3_ObjectInappropriate(
+    create_bucket_localstack, upload_file_localstack
+):
+    files = [
+        ('str', dict()),
+    ]
+    error = 'Object has inappropriate type, accepted format (list[tuple[str, io.BytesIO()]])'
+
+    try:
+        zips3.zipping_in_s3('test', '', 'zip_name', files)
+    except Exception as e:
+        assert str(e) == error
+
+
+@pytest.fixture
+def upload_more_file_localstack():
+    with open('tests/files/test.jpg', 'rb') as f:
+        zips3.__s3_client__.upload_fileobj(f, 'test', 'big/test.jpg')
+
+
+def test_s3_download_in_memory_prefix(
+    create_bucket_localstack,
+    upload_file_localstack,
+    upload_more_file_localstack,
+):
+    list_sp = zips3.s3_download_in_memory('test', 'bi')
+    result = list()
+    [result.append(i[0]) for i in list_sp]
+    assert 'big/test.jpg' in result
+    assert len(result) == 1
+
+    list_sp = zips3.s3_download_in_memory('test', 'big/')
+    result = list()
+    [result.append(i[0]) for i in list_sp]
+    assert 'test.jpg' in result
+    assert len(result) == 1
+
+
+def test_zipping_in_s3_prefix(
+    create_bucket_localstack,
+    upload_file_localstack,
+    upload_more_file_localstack,
+):
+    zips3.zipping_in_s3('test', 'big/', 'zip_name')
+    result = list()
+    [
+        result.append(i.key)
+        for i in zips3.__s3_resource__.Bucket('test').objects.all()
+    ]
+    assert 'big/zip_name.zip' in result
