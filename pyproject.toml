@@ -27,6 +27,8 @@ awscli = "^1.27.126"
 mkdocstrings = "^0.21.2"
 mkdocstrings-python = "^0.9.0"
 mkdocs-material = "^9.1.9"
+mkdocs-macros-plugin = "^0.7.0"
+jinja2 = "^3.1.2"
 
 [build-system]
 requires = ["poetry-core"]
