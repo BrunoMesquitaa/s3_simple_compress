@@ -10,11 +10,11 @@ O programa de compactação (zip) de arquivos no S3 da AWS é uma ferramenta que
 ## Requisitos
 
 Antes de começar a usar o programa de compactação (zip) de arquivos no S3 da AWS, você precisará ter o seguinte:
-
-    Uma conta da AWS
-    Acesso ao serviço S3 da AWS
-    Conhecimento básico sobre a linha de comando e AWS
-
+```bash
+Uma conta da AWS
+Acesso ao serviço S3 da AWS
+Conhecimento básico sobre a linha de comando e AWS
+```
 ## Instalação
 
 {% include "templates/install.md" %}
@@ -22,17 +22,16 @@ Antes de começar a usar o programa de compactação (zip) de arquivos no S3 da 
 ## Como usar o programa
 
 Para usar o programa de compactação (zip) de arquivos no S3 da AWS, siga as etapas abaixo:
-
-    Abra o terminal ou prompt de comando e navegue até a pasta onde o programa foi instalado.
-    Execute o comando python main.py para iniciar o programa.
-    Quando solicitado, forneça as seguintes informações:
-        O nome do bucket S3 onde estão localizados os arquivos a serem compactados.
-        Uma lista de chaves de objetos S3 que serão compactados. Cada chave representa um arquivo individual no bucket.
-        O nome do arquivo zip resultante da compactação.
-    Pressione Enter para iniciar a compactação.
-
+```bash
+Primeiro devemos importar nossa Package
+Em seguida instânciar a classe
+Podemos ou nao ter que chamar o metodo `credentials`, vai depender se ja existir `~/.aws/credentials` ou nao
+Por fim so precisamos chamar o metodo `zipping_in_s3`
+```
 O programa irá compactar os arquivos especificados e salvar o arquivo zip compactado no bucket S3 especificado.
 
 ## Exemplo de código
 
-Aqui está um exemplo de código Python que implementa a funcionalidade de compactação (zip) de arquivos no S3 da AWS:
+![logo do projeto](assets/exemple.png){ width="500" }
+
+Aqui está um exemplo de código Python que implementa a funcionalidade de compactação (zip) de arquivos no S3 da AWS 100% em memoria.

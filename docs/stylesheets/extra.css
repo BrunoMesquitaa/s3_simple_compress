@@ -12,12 +12,12 @@
 
 .card {
     border-radius: 5px;
-    box-shadow: 7px 7px 13px 0px #ededed;
+    box-shadow: 7px 7px 13px 0px #111111;
     padding: 30px;
     margin: 30px;
     transition: all 0.1s ease-out;
     width: 500px;
-    border-top: 3px solid #4039b5;
+    border-top: 3px solid #000000;
 }
 
 .card:hover {
