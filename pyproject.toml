@@ -10,6 +10,7 @@ packages = [{include = "s3_compress"}]
 python = "^3.10"
 boto3 = ">=1.25.0,<1.26.98"
 rich = "^13.3.5"
+ipywidgets = "^8.0.6"
 
 
 [tool.poetry.group.dev.dependencies]

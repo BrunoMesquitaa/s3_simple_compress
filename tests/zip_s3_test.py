@@ -1,7 +1,6 @@
 import pytest, botocore
 from s3_compress.zipping_s3 import ZippingS3
-from pytest import raises
-import re
+
 
 zips3 = ZippingS3()
 
@@ -46,7 +45,15 @@ def create_bucket_localstack():
 
 def test_s3_download_in_memory_NoSuchFile(create_bucket_localstack):
     result = zips3.s3_download_in_memory('test', 'test')
-    assert len(result) == 0
+    assert not result
+
+
+def test_zipping_in_s3_NoSuchFile(create_bucket_localstack):
+    error = 'File or directory is requested but doesn’t exist'
+    try:
+        zips3.zipping_in_s3('test', 'test', 'zip_name')
+    except Exception as e:
+        assert str(e) == error
 
 
 @pytest.fixture

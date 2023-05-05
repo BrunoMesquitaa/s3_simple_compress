@@ -1,17 +1,17 @@
 import io
 import zipfile
 import boto3
-from rich import print
 from rich.progress import Progress
 from rich.console import Console
 
 
 class ZippingS3:
-    console = Console()
 
     __s3_client__ = boto3.client('s3')
 
     __s3_resource__ = boto3.resource('s3')
+
+    console = Console()
 
     def credentials(
         self,
@@ -69,7 +69,7 @@ class ZippingS3:
             ]
         """
 
-        print('[green]\nStart Download :rocket:')
+        self.console.print('[green]\nStart Download :rocket:')
         with Progress() as progress:
             files = list()
             bucket = self.__s3_resource__.Bucket(bucket_name)
@@ -89,7 +89,7 @@ class ZippingS3:
                 )
                 files.append(tupla_file)
                 progress.update(task, advance=1)
-        print('[green]Finish Download :ok_hand:\n')
+        self.console.print('[green]Finish Download :ok_hand:\n')
         return files
 
     def zipping_in_s3(
@@ -115,7 +115,12 @@ class ZippingS3:
 
         files = self.s3_download_in_memory(bucket_name, prefix)
 
-        print('[green]Start zip :package:')
+        if not files:
+            raise FileNotFoundError(
+                'File or directory is requested but doesn’t exist'
+            )
+
+        self.console.print('[green]Start zip :package:')
         with self.console.status('Initial status ') as status:
 
             status.update(
@@ -142,6 +147,6 @@ class ZippingS3:
                 str(prefix + zip_name + '.zip'),
                 extra_args,
             )
-        print('[green]Finish zip :ok_hand:\n')
+        self.console.print('[green]Finish zip :ok_hand:\n')
 
-        print('[green]All Rigth :tada::tada::tada:')
+        self.console.print('[green]All Rigth :tada::tada::tada:')
