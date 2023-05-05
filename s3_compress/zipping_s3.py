@@ -9,6 +9,10 @@ from rich.console import Console
 class ZippingS3:
     console = Console()
 
+    __s3_client__ = boto3.client('s3')
+
+    __s3_resource__ = boto3.resource('s3')
+
     def credentials(
         self,
         ACCESS_KEY: str = None,
@@ -99,7 +103,6 @@ class ZippingS3:
 
         """
         Parameters:
-            files: list of binary files from s3_download_in_memory()
             bucket_name: The bucket name of the bucket containing the object.
             prefix: Limits the response to keys that begin with the specified prefix.
             zip_name: Name of Zip file.
@@ -107,7 +110,7 @@ class ZippingS3:
         Returns:
             Return None
         Examples:
-            >>> zipping_in_s3('files', 'bucket_name', 'prefix', 'zip_name')
+            >>> zipping_in_s3('bucket_name', 'prefix', 'zip_name')
         """
 
         files = self.s3_download_in_memory(bucket_name, prefix)
