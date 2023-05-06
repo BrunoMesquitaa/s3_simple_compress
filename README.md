@@ -1,6 +1,10 @@
 # S3 Simple Compress ZIP
 ## Documentation for AWS S3 In-Memory File Compression (zip) Program
 
+[![Python tests](https://github.com/BrunoMesquitaa/s3_simple_compress/actions/workflows/pytest.yml/badge.svg)](https://github.com/BrunoMesquitaa/s3_simple_compress/actions/workflows/pytest.yml)
+[![codecov](https://codecov.io/github/BrunoMesquitaa/s3_simple_compress/branch/main/graph/badge.svg?token=9J8EV3D4T3)](https://codecov.io/github/BrunoMesquitaa/s3_simple_compress)
+[![Documentation Status](https://readthedocs.org/projects/s3-simple-compress/badge/?version=latest)](https://s3-simple-compress.readthedocs.io/en/latest/?badge=latest)
+
 ## Overview
 
 The AWS S3 file compression (zip) program is a tool that allows users to compress one or more files stored in S3 into a single zip file all in memory without the need to download to your Hard Disk. This can be useful for reducing file sizes and saving storage costs.
@@ -39,13 +43,13 @@ How to install the project
 For installation of the project's CLI, we recommend using poetry to install:
 
 ```console
-poetry add s3-compress
+poetry add s3-simple-compress
 ```
 
 Although this is only a recommendation! You can also install the project with your preferred package manager, such as pip:
 
 ```console
-pip install s3-compress
+pip install s3-simple-compress
 ```
 
 ---

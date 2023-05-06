@@ -36,13 +36,13 @@ How to install the project
 For installation of the project's CLI, we recommend using poetry to install:
 
 ```bash
-poetry add s3-compress
+poetry add s3-simple-compress
 ```
 
 Although this is only a recommendation! You can also install the project with your preferred package manager, such as pip:
 
 ```bash
-pip install s3-compress
+pip install s3-simple-compress
 ```
 
 ---
