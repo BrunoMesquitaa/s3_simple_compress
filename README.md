@@ -8,7 +8,7 @@ The AWS S3 file compression (zip) program is a tool that allows users to compres
 ## Requirements
 
 Before using the AWS S3 file compression (zip) program, you'll need to have the following:
-```md
+```
 - An AWS account
 - Access to the AWS S3 service
 - Basic knowledge of command line and AWS
@@ -38,13 +38,13 @@ How to install the project
 
 For installation of the project's CLI, we recommend using poetry to install:
 
-```bash
+```console
 poetry add s3-compress
 ```
 
 Although this is only a recommendation! You can also install the project with your preferred package manager, such as pip:
 
-```bash
+```console
 pip install s3-compress
 ```
 
@@ -53,7 +53,7 @@ pip install s3-compress
 ## How to use the program
 
 To use the AWS S3 file compression (zip) program, follow the steps below:
-```md
+```
 - First, we need to import our package
 - Then, instantiate the class
 - We may or may not need to call the `credentials` method, depending on whether `~/.aws/credentials` already exists or not
