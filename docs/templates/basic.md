@@ -24,7 +24,7 @@ Requirements
 
 Before using the AWS S3 file compression (zip) program, you'll need to have the following:
 
-bash
+Bash
 
 An AWS account
 Access to the AWS S3 service
