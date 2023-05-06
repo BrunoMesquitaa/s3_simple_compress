@@ -54,10 +54,10 @@ class ZippingS3:
 
         """
         Parameters:
-            bucket_name: The bucket name of the bucket containing the object.
-            prefix: Limits the response to keys that begin with the specified prefix.
+            bucket_name: The name of the bucket.
+            prefix: The prefix is used to find the path/file matches.
         Returns:
-            Return a list of tuples with the file name and a binary file.
+            A method that returns a list of tuples, where each tuple contains a `string` (name file) and an `io.BytesIO()` object (file binary), is returning information about binary files at runtime, without the need to create temporary physical files. This allows for manipulation of binary data without taking up disk space.
         Examples:
             >>> s3_download_in_memory('bucket_name', 'prefix')
             [
@@ -112,10 +112,11 @@ class ZippingS3:
 
         """
         Parameters:
-            bucket_name: The bucket name of the bucket containing the object.
-            prefix: Limits the response to keys that begin with the specified prefix.
-            zip_name: Name of Zip file.
-            extra_args: Extra arguments that may be passed to the client operation. For allowed upload arguments see boto3.s3.transfer.S3Transfer.ALLOWED_UPLOAD_ARGS.
+            bucket_name: The name of the bucket .
+            prefix: The prefix is used to find the path/file matches.
+            zip_name: zip_name is the name given to the compressed file generated from the compression of one or more files in zip format.
+            files: It is a list of tuples, where each tuple contains a string and an io.BytesIO() object. When this parameter is used, the s3_download_in_memory() method is not executed, which means that the file is not downloaded from AWS S3. This way, it is possible to send a ZIP file directly from the local machine to S3 without the need to download the file from the cloud.
+            extra_args: The extra_args parameter is an optional parameter used in the Boto3 library to send additional arguments for the upload or download operation of files in AWS S3. It allows specifying additional options such as metadata or storage settings that can be passed to the S3 service during the file transfer.
         Returns:
             Return None
         Examples:
