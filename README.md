@@ -5,6 +5,9 @@
 [![codecov](https://codecov.io/github/BrunoMesquitaa/s3_simple_compress/branch/main/graph/badge.svg?token=9J8EV3D4T3)](https://codecov.io/github/BrunoMesquitaa/s3_simple_compress)
 [![Documentation Status](https://readthedocs.org/projects/s3-simple-compress/badge/?version=latest)](https://s3-simple-compress.readthedocs.io/en/latest/?badge=latest)
 
+### <a href="https://s3-simple-compress.readthedocs.io/en/latest/?badge=latest">Read the Docs Link</a>
+### <a href="https://pypi.org/project/s3-simple-compress/">PyPI Link</a>
+
 ## Overview
 
 The AWS S3 file compression (zip) program is a tool that allows users to compress one or more files stored in S3 into a single zip file all in memory without the need to download to your Hard Disk. This can be useful for reducing file sizes and saving storage costs.
