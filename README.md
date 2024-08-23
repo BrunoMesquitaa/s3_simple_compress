@@ -1,4 +1,4 @@
-<div align="center">
+
 <img src="s3_simple_compress.jpeg" width="500">
   
 # S3 Simple Compress ZIP
@@ -10,8 +10,6 @@
 
 ### <a href="https://s3-simple-compress.readthedocs.io/en/latest/?badge=latest">Read the Docs Link</a>
 ### <a href="https://pypi.org/project/s3-simple-compress/">PyPI Link</a>
-
-</div>
 
 ## Overview
 
