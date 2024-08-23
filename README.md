@@ -8,8 +8,8 @@
 [![codecov](https://codecov.io/github/BrunoMesquitaa/s3_simple_compress/branch/main/graph/badge.svg?token=9J8EV3D4T3)](https://codecov.io/github/BrunoMesquitaa/s3_simple_compress)
 [![Documentation Status](https://readthedocs.org/projects/s3-simple-compress/badge/?version=latest)](https://s3-simple-compress.readthedocs.io/en/latest/?badge=latest)
 
-### <a href="https://s3-simple-compress.readthedocs.io/en/latest/?badge=latest">Read the Docs Link</a>
-### <a href="https://pypi.org/project/s3-simple-compress/">PyPI Link</a>
+### <a target="_blank" href="https://s3-simple-compress.readthedocs.io/en/latest/?badge=latest">Read the Docs Link</a>
+### <a target="_blank" href="https://pypi.org/project/s3-simple-compress/">PyPI Link</a>
 
 ## Overview
 
